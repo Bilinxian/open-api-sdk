@@ -8,6 +8,7 @@
 namespace Wsb\OpenApi;
 
 use Wsb\OpenApi\Api\DeliverService;
+use Wsb\OpenApi\Api\DeliverShopService;
 use Wsb\OpenApi\Api\FundService;
 use Wsb\OpenApi\Api\OrderService;
 use Wsb\OpenApi\Api\PartnerService;
@@ -49,6 +50,14 @@ class WsbApiClient
     public function getOrderService()
     {
         return new OrderService($this->config);
+    }
+
+    /**
+     * @return DeliverShopService
+     */
+    public function getDeliverShopService()
+    {
+        return new DeliverShopService($this->config);
     }
 
     /**

@@ -14,6 +14,29 @@
 安装扩展
 composer require bilinxian/open-api-sdk
 ```
+接口类说明：
+```text
+$config = new Config('2ewz3nvl4jxshbk6', '883a5a02-a4fb-494d-986f-4d89f2cdb1f3', 0, true);
+$apiClient = new WsbApiClient($config);
+
+门店服务接口
+$apiClient->getStoreService()
+
+订单服务接口
+$apiClient->getOrderService()
+
+配送开通服务接口
+$apiClient->getDeliverShopService()
+
+配送服务接口
+$apiClient->getDeliverService()
+
+费用服务接口
+$apiClient->getFundService()
+
+合作商服务接口
+$apiClient->getPartnerService()
+```
 
 门店示例：
 

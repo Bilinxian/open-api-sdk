@@ -12,7 +12,7 @@
 
 ```
 安装扩展
-composer require wsb/open-api
+composer require bilinxian/open-api-sdk
 ```
 
 门店示例：

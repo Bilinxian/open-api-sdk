@@ -1,0 +1,22 @@
+{
+    "name": "bilinxian/open-api-sdk",
+    "description": "外送帮开放平台SDK",
+    "type": "sdk",
+    "autoload": {
+        "psr-4": {
+            "Wsb\\OpenApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "liuhui",
+            "email": "liuhui@cainiaomeishi.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "ext-curl": "*"
+    }
+}

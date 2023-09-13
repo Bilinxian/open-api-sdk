@@ -86,6 +86,8 @@ class HttpClient
         }
         curl_setopt ( $ch, CURLOPT_USERAGENT, "wsb-sdk-php" );
 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postFields));
         curl_setopt($ch,CURLOPT_HTTPHEADER, [

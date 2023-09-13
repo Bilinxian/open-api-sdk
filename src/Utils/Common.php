@@ -30,8 +30,6 @@ class Common
             }
         }
 
-        var_dump($signStr);
-
         $signStr .= $config->getAppSecret();
 
         return md5($signStr);

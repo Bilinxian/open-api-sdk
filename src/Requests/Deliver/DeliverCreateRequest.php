@@ -12,9 +12,9 @@ use Wsb\OpenApi\Requests\RequestInterface;
 class DeliverCreateRequest implements RequestInterface
 {
 
-    private $ship_ways;
+    public $ship_ways;
 
-    private $ship_way_map;
+    public $ship_way_map;
 
     public function apiParams()
     {

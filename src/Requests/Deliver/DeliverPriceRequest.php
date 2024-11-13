@@ -12,9 +12,11 @@ use Wsb\OpenApi\Requests\RequestInterface;
 class DeliverPriceRequest implements RequestInterface
 {
 
+    public $ship_ways = [];
+
     public function apiParams()
     {
-        return [];
+        return array_filter(get_object_vars($this));
     }
 
     public function apiPath()

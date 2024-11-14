@@ -107,12 +107,13 @@ class DeliverService extends AbstractService
     /**
      * 查看骑手位置
      * link url https://www.waisongbang.com/apiDoc/#/delivery/pos_track?v=1.2.2
+     * @param $deliveryUuid
      * @param DeliverPosTrackRequest $deliverPosTrackRequest
      * @return array|mixed
      */
-    public function deliverPosTrack(DeliverPosTrackRequest $deliverPosTrackRequest)
+    public function deliverPosTrack($deliveryUuid, DeliverPosTrackRequest $deliverPosTrackRequest)
     {
-        return $this->client->request($deliverPosTrackRequest);
+        return $this->client->request($deliverPosTrackRequest, [$deliveryUuid]);
     }
 
     /**

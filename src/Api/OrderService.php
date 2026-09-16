@@ -10,6 +10,7 @@ namespace Wsb\OpenApi\Api;
 use Wsb\OpenApi\Requests\Order\OrderCancelRequest;
 use Wsb\OpenApi\Requests\Order\OrderConfirmPaidRequest;
 use Wsb\OpenApi\Requests\Order\OrderCreateRequest;
+use Wsb\OpenApi\Requests\Order\OrderDetailRequest;
 use Wsb\OpenApi\Requests\Order\OrderListRequest;
 
 class OrderService extends AbstractService
@@ -33,6 +34,18 @@ class OrderService extends AbstractService
     public function orderConfirmPaid(OrderConfirmPaidRequest $orderConfirmPaidRequest)
     {
         return $this->client->request($orderConfirmPaidRequest);
+    }
+
+    /**
+     * 订单详情
+     * link url https://www.waisongbang.com/apiDoc/#/order/detail
+     * @param string $platformOrderId 平台订单号
+     * @param OrderDetailRequest $orderDetailRequest
+     * @return array|mixed
+     */
+    public function orderDetail($platformOrderId, OrderDetailRequest $orderDetailRequest)
+    {
+        return $this->client->request($orderDetailRequest, [$platformOrderId]);
     }
 
     /**

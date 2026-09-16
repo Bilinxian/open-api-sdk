@@ -8,6 +8,7 @@
 namespace Wsb\OpenApi\Api;
 
 use Wsb\OpenApi\Requests\Order\OrderCancelRequest;
+use Wsb\OpenApi\Requests\Order\OrderConfirmPaidRequest;
 use Wsb\OpenApi\Requests\Order\OrderCreateRequest;
 use Wsb\OpenApi\Requests\Order\OrderListRequest;
 
@@ -22,6 +23,16 @@ class OrderService extends AbstractService
     public function orderCreate(OrderCreateRequest $orderCreateRequest)
     {
         return $this->client->request($orderCreateRequest);
+    }
+
+    /**
+     * 支付确认（预支付建单后，支付成功再通知/打印/自动发单）
+     * @param OrderConfirmPaidRequest $orderConfirmPaidRequest
+     * @return array|mixed
+     */
+    public function orderConfirmPaid(OrderConfirmPaidRequest $orderConfirmPaidRequest)
+    {
+        return $this->client->request($orderConfirmPaidRequest);
     }
 
     /**

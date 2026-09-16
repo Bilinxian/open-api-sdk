@@ -50,9 +50,25 @@ class OrderCreateRequest implements RequestInterface
 
     public $invoice_amount;
 
+    /**
+     * 是否已支付：0/1 或布尔；与 paid_done 二选一即可，paid_done 优先。
+     * 未传时服务端默认已支付；预支付请显式传 0/false。
+     * @var int|bool|null
+     */
+    public $is_paid;
+
+    /**
+     * 是否已支付：0/1；与 is_paid 二选一即可，二者同时传时以本字段为准。
+     * @var int|null
+     */
+    public $paid_done;
+
     public function apiParams()
     {
-        return array_filter(get_object_vars($this));
+        // 仅过滤未赋值字段，保留 0/false（如 is_paid=0、pick_up=0）
+        return array_filter(get_object_vars($this), function ($value) {
+            return $value !== null;
+        });
     }
 
     public function apiPath()

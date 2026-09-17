@@ -12,7 +12,7 @@ use Wsb\OpenApi\Requests\RequestInterface;
 /**
  * 支付确认：未支付建单后，真实支付成功再通知/打印/自动发单。
  * 必填 store_id；platform_order_id 与 order_id 二选一。
- * 可选 is_paid / paid_done：若传则须为已支付语义（true/1）。
+ * 可选 pay_status：传则须为 paid（推荐）；不传亦可完成确认。
  */
 class OrderConfirmPaidRequest implements RequestInterface
 {
@@ -23,13 +23,19 @@ class OrderConfirmPaidRequest implements RequestInterface
     public $order_id;
 
     /**
-     * 可选；传则须为 true/1
+     * 支付状态（推荐）：传则须为 paid。不传也可确认支付。
+     * @var string|null unpaid|paid
+     */
+    public $pay_status;
+
+    /**
+     * @deprecated 请改用 pay_status=paid。0/"0"/false 经 array_filter 会被丢掉。
      * @var int|bool|null
      */
     public $is_paid;
 
     /**
-     * 可选；传则须为 1
+     * @deprecated 请改用 pay_status=paid。0/"0" 经 array_filter 会被丢掉。
      * @var int|null
      */
     public $paid_done;

@@ -36,10 +36,7 @@ class OrderConfirmPaidRequest implements RequestInterface
 
     public function apiParams()
     {
-        // 仅过滤未赋值字段，保留 0/false
-        return array_filter(get_object_vars($this), function ($value) {
-            return $value !== null;
-        });
+        return array_filter(get_object_vars($this));
     }
 
     public function apiPath()

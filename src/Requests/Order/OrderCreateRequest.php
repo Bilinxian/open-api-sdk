@@ -65,10 +65,7 @@ class OrderCreateRequest implements RequestInterface
 
     public function apiParams()
     {
-        // 仅过滤未赋值字段，保留 0/false（如 is_paid=0、pick_up=0）
-        return array_filter(get_object_vars($this), function ($value) {
-            return $value !== null;
-        });
+        return array_filter(get_object_vars($this));
     }
 
     public function apiPath()

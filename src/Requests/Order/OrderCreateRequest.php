@@ -51,14 +51,21 @@ class OrderCreateRequest implements RequestInterface
     public $invoice_amount;
 
     /**
-     * 是否已支付：0/1 或布尔；与 paid_done 二选一即可，paid_done 优先。
-     * 未传时服务端默认已支付；预支付请显式传 0/false。
+     * 支付状态（推荐）：字符串 unpaid=未支付，paid=已支付。
+     * apiParams 使用 array_filter，0/"0"/false 会被丢弃；未支付请传本字段而非 is_paid/paid_done。
+     * 未传时服务端默认已支付；预支付请显式传 unpaid。
+     * @var string|null unpaid|paid
+     */
+    public $pay_status;
+
+    /**
+     * @deprecated 请改用 pay_status。0/"0"/false 经 array_filter 会被丢掉。
      * @var int|bool|null
      */
     public $is_paid;
 
     /**
-     * 是否已支付：0/1；与 is_paid 二选一即可，二者同时传时以本字段为准。
+     * @deprecated 请改用 pay_status。0/"0" 经 array_filter 会被丢掉。
      * @var int|null
      */
     public $paid_done;
